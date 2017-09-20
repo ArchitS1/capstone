@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    tools:context="com.info34049.a1171_7166.lostandfound.proof_of_conceptprototype.FoundAnItemActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btnBrowse"
+        android:layout_width="360dp"
+        android:layout_height="200dp"
+        android:fontFamily="casual"
+        android:onClick="onClickBrowse"
+        android:textStyle="bold"
+        android:text="View a list of items other people have lost"
+        android:textSize="24sp"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/btnDescribe"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/button4" />
+
+    <Button
+        android:id="@+id/btnDescribe"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textStyle="bold"
+        android:onClick="onClickDesc"
+        android:text="Button"
+        android:layout_below="@+id/btnAct"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_weight="2"
+        android:fontFamily="casual"
+        android:onClick="onClickSettings"
+        android:textStyle="bold"
+        android:text="Settings"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnAct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_weight="0.39"
+        android:fontFamily="casual"
+        android:onClick="onClickAccount"
+        android:text="Account"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+
+</RelativeLayout>

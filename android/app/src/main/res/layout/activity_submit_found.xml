@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.info34049.a1171_7166.lostandfound.proof_of_conceptprototype.SubmitFoundActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg2"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="33dp"
+            android:layout_weight="1"
+            android:fontFamily="casual"
+            android:onClick="onClickSettings"
+            android:text="Settings"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:onClick="onClickSubmit"
+            android:text="Submit The Description"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"
+            android:layout_above="@+id/button4"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/btnAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:fontFamily="casual"
+            android:onClick="onClickAccount"
+            android:text="Account"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="Found One Samsung Galaxy S6 Black in color. Have Black phone cover"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/phone"
+        android:layout_alignTop="@+id/editText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView"
+        android:layout_marginBottom="69dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_toLeftOf="@+id/editText6"
+        android:fontFamily="casual"
+        android:text="Contact:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView6"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignRight="@+id/textView6"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_below="@+id/editText6"
+        android:layout_marginTop="14dp"
+        android:fontFamily="casual"
+        android:text="Email:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:inputType="number"
+        android:text="222-222-2222"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/editText6"
+        android:layout_toEndOf="@+id/textView7"
+        android:layout_toRightOf="@+id/textView7"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="aaap2341@gmail.com" />
+
+
+</RelativeLayout>

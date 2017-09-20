@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.info34049.a1171_7166.lostandfound.proof_of_conceptprototype.ConfirmLogoutActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="161dp"
+            android:layout_height="274dp"
+            android:background="@drawable/thumbup"
+            android:onClick="onClickYes" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:background="@drawable/thumbsdown"
+            android:onClick="onClickNo" />
+
+    </LinearLayout>
+</LinearLayout>

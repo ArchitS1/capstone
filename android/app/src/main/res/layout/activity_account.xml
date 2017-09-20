@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.info34049.a1171_7166.lostandfound.proof_of_conceptprototype.AccountActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg2"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:fontFamily="casual"
+            android:onClick="onClickMyItems"
+            android:text="My Items"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="14dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:fontFamily="casual"
+            android:onClick="onClickLogout"
+            android:text="Logout"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/editText2"
+            android:layout_alignLeft="@+id/textView5"
+            android:layout_alignStart="@+id/textView5"
+            android:fontFamily="casual"
+            android:text="USER:"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:fontFamily="casual"
+            android:inputType="textPersonName"
+            android:text="Smith"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_above="@+id/textView5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="46dp" />
+
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnLogout"
+            android:layout_marginBottom="84dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_toLeftOf="@+id/editText4"
+            android:layout_toStartOf="@+id/editText4"
+            android:fontFamily="casual"
+            android:text="Number of Items Found:"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBaseline="@+id/textView5"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_alignEnd="@+id/btnLogout"
+            android:layout_alignRight="@+id/btnLogout"
+            android:ems="10"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:fontFamily="casual"
+            android:inputType="number"
+            android:text="3" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/button4"
+            android:ems="10"
+            android:inputType="date"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:fontFamily="casual"
+            android:text="January 12, 2017" />
+
+    </RelativeLayout>
+</LinearLayout>
