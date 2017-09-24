@@ -45,17 +45,18 @@ public class ConnectionFactory {
 	
 	/**
 	 * Creates a database connection
-	 * @return a handle to the Connection object, or <code>null</code> if the
+	 * @return a handle to the connection, or <code>null</code> if the
 	 * connection could not be created.
 	 */
-	public Connection createConnection() {
-		Connection conn = null;
+	public ConnectionWrapper createConnection() {
 		try {
-			conn = DriverManager.getConnection(url, username, password);
+			Connection conn = DriverManager.getConnection(url, username, password);
+			return new ConnectionWrapper(conn);
 		} catch (SQLException e) {
+			System.out.println("SQL Exception. Code: " + e.getErrorCode());
 			e.printStackTrace();
+			return null;
 		}
-		return conn;
 	}
 	
 }
