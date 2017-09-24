@@ -1,4 +1,4 @@
-package ca.wednesday.lnf.controllers;
+package ca.wednesdaypc.lnf.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
