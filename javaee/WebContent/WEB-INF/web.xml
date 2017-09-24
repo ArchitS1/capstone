@@ -9,4 +9,29 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <session-config>
+    <session-timeout>
+        30
+    </session-timeout>
+  </session-config>
+  <context-param>
+      <param-name>driver</param-name>
+      <param-value>com.mysql.cj.jdbc.Driver</param-value>
+  </context-param>
+  <context-param>
+      <param-name>url</param-name>
+      <param-value>jdbc:mysql://localhost/</param-value>
+  </context-param>
+  <context-param>
+      <param-name>schema</param-name>
+      <param-value>lostnfound</param-value>
+  </context-param>
+  <context-param>
+      <param-name>dbusername</param-name>
+      <param-value>root</param-value>
+  </context-param>
+  <context-param>
+      <param-name>dbpassword</param-name>
+      <param-value>1234</param-value>
+  </context-param>
 </web-app>
