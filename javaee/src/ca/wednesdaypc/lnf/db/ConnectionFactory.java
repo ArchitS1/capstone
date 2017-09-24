@@ -2,7 +2,9 @@ package ca.wednesdaypc.lnf.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * <p>Creates database connections.</p>
@@ -58,5 +60,23 @@ public class ConnectionFactory {
 			return null;
 		}
 	}
+	
+	/**
+	 * Convenience method. Closes all arguments if not null, ignoring any
+	 * SqlExceptions thrown in the process.
+	 */
+	public static void closeJDBCObjects(Connection conn, Statement stmt, ResultSet rs) {
+        try {if (rs != null) rs.close();} catch (SQLException e) {}
+        try {if (stmt != null) stmt.close();} catch (SQLException e) {}
+        try {if (conn != null) conn.close();} catch (SQLException e) {}
+    }
+    
+	/**
+	 * Convenience method. Closes all arguments if not null, ignoring any
+	 * SqlExceptions thrown in the process.
+	 */
+    public static void closeJDBCObjects(Connection conn, Statement stmt) {
+        closeJDBCObjects(conn, stmt, null);
+    }
 	
 }
