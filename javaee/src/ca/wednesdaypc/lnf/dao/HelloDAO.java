@@ -40,5 +40,4 @@ public class HelloDAO {
 			ConnectionFactory.closeJDBCObjects(null, st, rs);
 		}
 	}
-	
 }
