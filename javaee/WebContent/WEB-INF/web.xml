@@ -27,6 +27,10 @@
       <param-value>lostnfound</param-value>
   </context-param>
   <context-param>
+  	<param-name>extrastuff</param-name>
+  	<param-value>?verifyServerCertificate=false&amp;useSSL=true</param-value>
+  </context-param>
+  <context-param>
       <param-name>dbusername</param-name>
       <param-value>root</param-value>
   </context-param>

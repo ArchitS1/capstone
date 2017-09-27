@@ -36,6 +36,7 @@ public class ConnectionFactoryIniter implements ServletContextListener {
         		 sc.getInitParameter("driver"),
         		 sc.getInitParameter("url"),
         		 sc.getInitParameter("schema"),
+        		 sc.getInitParameter("extrastuff"),
         		 sc.getInitParameter("dbusername"),
         		 sc.getInitParameter("dbpassword")));
     }
