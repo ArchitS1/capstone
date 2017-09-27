@@ -29,7 +29,7 @@ public class ConnectionFactory {
 	 * @throws IllegalArumentException If <code>driver</code> does not correspond
 	 * to a usable database driver.
 	 */
-	public ConnectionFactory(String driver, String url, String schema,
+	public ConnectionFactory(String driver, String url, String schema, String extraStuff,
 			String username, String password)
 			throws IllegalArgumentException {
 		
@@ -40,7 +40,7 @@ public class ConnectionFactory {
 					driver);
 		}
 		
-		this.url = url + schema;
+		this.url = url + schema + extraStuff;
 		this.username = username;
 		this.password = password;
 	}

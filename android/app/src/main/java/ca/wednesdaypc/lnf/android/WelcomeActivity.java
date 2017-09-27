@@ -20,7 +20,8 @@ public class WelcomeActivity extends AppCompatActivity {
 		final TextView mTextView = (TextView)findViewById(R.id.helloTextView);
 		
 		RequestQueue queue = Volley.newRequestQueue(this);
-		String url = "http://www.google.com";
+		String url = "http://10.46.26.44:8080/capstone_server/Hello";
+		//String url = "http://google.ca";
 		
 		// Request a string response from the provided URL.
 		StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -28,14 +29,15 @@ public class WelcomeActivity extends AppCompatActivity {
 					@Override
 					public void onResponse(String response) {
 						// Display the first 500 characters of the response string.
-						mTextView.setText("Response is: " + response.substring(0, 500));
+						mTextView.setText(response);
 					}
 				}, new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
-				mTextView.setText("That didn't work!");
+				mTextView.setText("Couldn't retrieve data");
 			}
 		});
+		
 		// Add the request to the RequestQueue.
 		queue.add(stringRequest);
 	}

@@ -30,6 +30,7 @@ public class Hello extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.setContentType("application/json");
 		response.getWriter().append((new HelloDAO(getServletContext())).getHello());
+		//response.getWriter().append("Hello World!");
 	}
 
 	/**
