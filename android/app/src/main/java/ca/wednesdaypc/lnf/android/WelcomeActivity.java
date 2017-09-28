@@ -1,15 +1,12 @@
 package ca.wednesdaypc.lnf.android;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import ca.wednesdaypc.lnf.json.JsonResponse;
 
@@ -22,7 +19,8 @@ public class WelcomeActivity extends LnfActivity {
 		
 		final TextView mTextView = (TextView)findViewById(R.id.helloTextView);
 		
-		RequestQueue queue = Volley.newRequestQueue(this);
+		GlobalData.init(getApplicationContext());
+		
 		String url = "http://192.168.2.36:8080/capstone_server/Hello";
 		//String url = "http://google.ca";
 		
@@ -46,8 +44,9 @@ public class WelcomeActivity extends LnfActivity {
 		});
 		
 		// Add the request to the RequestQueue.
-		queue.add(request);
+		GlobalData.getRequestQueue().add(request);
 		
 		mTitleTextView.setText(R.string.title_welcome);
 	}
+	
 }

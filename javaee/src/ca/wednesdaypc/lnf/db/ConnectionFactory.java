@@ -56,14 +56,12 @@ public class ConnectionFactory {
 		try {
 			Connection conn = DriverManager.getConnection(url, username, password);
 			return new ConnectionWrapper(conn);
+		} catch (CommunicationsException e) {
+			System.err.println("KNOWN ERROR: Couldn't connect to the database.");
+			return null;
 		} catch (SQLException e) {
-			if (e.getCause() instanceof CommunicationsException) {
-				e.printStackTrace();
-				System.err.println("\n\n^^Couldn't connect to the database.");
-			} else {
-				System.out.println("SQL Exception. Code: " + e.getErrorCode());
-				e.printStackTrace();
-			}
+			System.err.println("SQL Exception. Code: " + e.getErrorCode());
+			e.printStackTrace();
 			return null;
 		}
 	}

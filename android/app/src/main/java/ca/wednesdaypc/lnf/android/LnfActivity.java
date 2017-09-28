@@ -33,13 +33,14 @@ public abstract class LnfActivity extends AppCompatActivity {
 		mTitleTextView = (TextView)findViewById(R.id.titleTextView);
 		mBackImageView = (ImageView)findViewById(R.id.backImageView);
 		
+		//Default behaviour for back button: close current Activity
 		mBackImageView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();
 			}
 		});
+		
 	}
-	
 	
 }

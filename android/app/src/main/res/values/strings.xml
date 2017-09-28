@@ -1,4 +1,5 @@
 <resources>
   <string name="app_name">Safe Return</string>
   <string name="title_welcome">Welcome</string>
+  <string name="desc_backbutton">Back button</string>
 </resources>
