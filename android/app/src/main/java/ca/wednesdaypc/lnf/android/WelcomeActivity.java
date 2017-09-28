@@ -10,6 +10,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import ca.wednesdaypc.lnf.json.JsonResponse;
+
 public class WelcomeActivity extends AppCompatActivity {
 	
 	@Override
@@ -20,16 +23,20 @@ public class WelcomeActivity extends AppCompatActivity {
 		final TextView mTextView = (TextView)findViewById(R.id.helloTextView);
 		
 		RequestQueue queue = Volley.newRequestQueue(this);
-		String url = "http://10.46.26.44:8080/capstone_server/Hello";
+		String url = "http://192.168.2.36:8080/capstone_server/Hello";
 		//String url = "http://google.ca";
 		
 		// Request a string response from the provided URL.
-		StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+		StringRequest request = new StringRequest(Request.Method.GET, url,
 				new Response.Listener<String>() {
 					@Override
 					public void onResponse(String response) {
-						// Display the first 500 characters of the response string.
-						mTextView.setText(response);
+						JsonResponse jr = JsonResponse.createFromJson(response);
+						if (jr.resultCode == JsonResponse.CODE_NOMINAL) {
+							mTextView.setText((String) jr.payload);
+						} else {
+							mTextView.setText("The server was unable to complete your request.");
+						}
 					}
 				}, new Response.ErrorListener() {
 			@Override
@@ -39,6 +46,6 @@ public class WelcomeActivity extends AppCompatActivity {
 		});
 		
 		// Add the request to the RequestQueue.
-		queue.add(stringRequest);
+		queue.add(request);
 	}
 }
