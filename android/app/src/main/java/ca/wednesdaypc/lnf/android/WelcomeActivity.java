@@ -20,7 +20,7 @@ public class WelcomeActivity extends AppCompatActivity {
 		final TextView mTextView = (TextView)findViewById(R.id.helloTextView);
 		
 		RequestQueue queue = Volley.newRequestQueue(this);
-		String url = "http://10.46.26.44:8080/capstone_server/Hello";
+		String url = "http://192.168.2.36:8080/capstone_server/Hello";
 		//String url = "http://google.ca";
 		
 		// Request a string response from the provided URL.

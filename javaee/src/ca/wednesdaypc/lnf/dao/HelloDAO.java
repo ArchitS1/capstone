@@ -17,15 +17,15 @@ public class HelloDAO {
 	
 	/**
 	 * Proof-of-concept method
-	 * @return the greeting from the database, or null if it couldn't be
-	 * retrieved.
+	 * 
+	 * @return the greeting from the database, or null if it couldn't be retrieved.
 	 */
 	public String getHello() {
 		Statement st = null;
 		ResultSet rs = null;
 		
-		try (ConnectionWrapper cw = ((ConnectionFactory)sc.getAttribute(
-				ConnectionFactoryIniter.FACTORY_NAME)).createConnection()) {
+		try (ConnectionWrapper cw = ((ConnectionFactory) sc.getAttribute(ConnectionFactoryIniter.FACTORY_NAME))
+				.createConnection()) {
 			
 			st = cw.getConn().createStatement();
 			rs = st.executeQuery("SELECT * FROM hello;");
