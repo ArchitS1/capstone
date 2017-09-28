@@ -27,6 +27,7 @@ public class HelloDAO {
 		try (ConnectionWrapper cw = ((ConnectionFactory) sc.getAttribute(ConnectionFactoryIniter.FACTORY_NAME))
 				.createConnection()) {
 			
+			if (cw == null) return null;
 			st = cw.getConn().createStatement();
 			rs = st.executeQuery("SELECT * FROM hello;");
 			if (!rs.first()) return null;

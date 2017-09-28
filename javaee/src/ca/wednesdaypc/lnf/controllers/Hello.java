@@ -31,7 +31,6 @@ public class Hello extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("application/json");
 		String message = (new HelloDAO(getServletContext())).getHello();
 		JsonResponse resp = new JsonResponse();
 		if (message == null) {

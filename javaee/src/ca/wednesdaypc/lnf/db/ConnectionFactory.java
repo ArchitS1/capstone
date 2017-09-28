@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
+
 /**
  * <p>Creates database connections.</p>
  * <p>Based heavily on the DBConnection class provided by the instructor to
@@ -55,8 +57,13 @@ public class ConnectionFactory {
 			Connection conn = DriverManager.getConnection(url, username, password);
 			return new ConnectionWrapper(conn);
 		} catch (SQLException e) {
-			System.out.println("SQL Exception. Code: " + e.getErrorCode());
-			e.printStackTrace();
+			if (e.getCause() instanceof CommunicationsException) {
+				e.printStackTrace();
+				System.err.println("\n\n^^Couldn't connect to the database.");
+			} else {
+				System.out.println("SQL Exception. Code: " + e.getErrorCode());
+				e.printStackTrace();
+			}
 			return null;
 		}
 	}
