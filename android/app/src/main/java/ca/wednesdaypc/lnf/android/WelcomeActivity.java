@@ -13,7 +13,7 @@ import com.android.volley.toolbox.Volley;
 
 import ca.wednesdaypc.lnf.json.JsonResponse;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends LnfActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,5 +47,7 @@ public class WelcomeActivity extends AppCompatActivity {
 		
 		// Add the request to the RequestQueue.
 		queue.add(request);
+		
+		mTitleTextView.setText(R.string.title_welcome);
 	}
 }

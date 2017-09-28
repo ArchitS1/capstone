@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Safe Return</string>
+  <string name="app_name">Safe Return</string>
+  <string name="title_welcome">Welcome</string>
 </resources>
