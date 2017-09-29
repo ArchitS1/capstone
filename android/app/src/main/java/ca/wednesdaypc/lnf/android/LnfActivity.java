@@ -34,13 +34,25 @@ public abstract class LnfActivity extends AppCompatActivity {
 		mBackImageView = (ImageView)findViewById(R.id.backImageView);
 		
 		//Default behaviour for back button: close current Activity
-		mBackImageView.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
-		
+		mBackImageView.setOnClickListener(v1 -> finish());
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		ConnectionManager.cancelRequests(null);
+	}
+	
+	/**
+	 * Provides an opportunity to bypass the behaviour of this class's own no-argument onStop()
+	 * @param bypass If true, this method calls super.onStop(). Otherwise, this method has identical
+	 *               behaviour to the no-argument version.
+	 */
+	protected void onStop(boolean bypass) {
+		if (bypass)
+			super.onStop();
+		else
+			onStop();
 	}
 	
 }
