@@ -7,6 +7,8 @@
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
     <item name="actionBarSize">50dp</item>
+    <item name="barIconSize">40dp</item>
+    <item name="clickableTextColor">#0074ff</item>
   </style>
 
 </resources>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ca.wednesdaypc.lnf.android.LoginActivity">
+  
+  <TextView
+      android:id="@+id/loginTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:onClick="swapLayouts"
+      android:text="@string/msg_clickheretologin"
+      android:textAllCaps="false"
+      android:textColor="?attr/clickableTextColor"
+      app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.79"
+      app:layout_constraintVertical_chainStyle="packed"/>
+  
+  <TableLayout
+      android:id="@+id/tableLayout"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      app:layout_constraintBottom_toTopOf="@+id/createAccountButton"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.6"
+      app:layout_constraintVertical_chainStyle="packed">
+    
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      
+      <TextView
+          android:id="@+id/usernameTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginRight="8dp"
+          android:text="@string/lbl_username"/>
+      
+      <EditText
+          android:id="@+id/usernameEditText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="textPersonName"/>
+    
+    </TableRow>
+    
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      
+      <TextView
+          android:id="@+id/passwordTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginRight="8dp"
+          android:text="@string/lbl_password"/>
+      
+      <EditText
+          android:id="@+id/passwordEditText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="textPassword"/>
+    
+    </TableRow>
+    
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+      
+      <TextView
+          android:id="@+id/confirmPasswordTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginRight="8dp"
+          android:text="@string/lbl_confirmpassword"/>
+      
+      <EditText
+          android:id="@+id/confirmPasswordEditText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="textPassword"/>
+    </TableRow>
+    
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+      
+      <TextView
+          android:id="@+id/emailTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginRight="8dp"
+          android:text="@string/lbl_email"/>
+      
+      <EditText
+          android:id="@+id/emailEditText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="textEmailAddress"/>
+    </TableRow>
+  
+  </TableLayout>
+  
+  <Button
+      android:id="@+id/createAccountButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="8dp"
+      android:text="@string/btn_createacct"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tableLayout"/>
+
+</android.support.constraint.ConstraintLayout>

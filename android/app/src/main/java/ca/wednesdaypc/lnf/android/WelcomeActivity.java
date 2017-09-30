@@ -1,6 +1,8 @@
 package ca.wednesdaypc.lnf.android;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.gson.JsonParseException;
@@ -36,6 +38,16 @@ public class WelcomeActivity extends LnfActivity {
 				error -> mTextView.setText("Error: " + error.getMessage()));
 		
 		mTitleTextView.setText(R.string.title_welcome);
+		
+		findViewById(R.id.accountImageView).setOnClickListener(v -> {
+			Class destination;
+			if (getPreferences(MODE_PRIVATE).contains(GlobalData.getProperty("prefsUsername"))) {
+				destination = AccountActivity.class;
+			} else {
+				destination = LoginActivity.class;
+			}
+			startActivity(new Intent(WelcomeActivity.this, destination));
+		});
 	}
 	
 }
