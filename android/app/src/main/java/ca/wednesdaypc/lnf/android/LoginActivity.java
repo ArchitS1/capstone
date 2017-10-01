@@ -72,8 +72,13 @@ public class LoginActivity extends LnfActivity {
 								Toast.makeText(getApplicationContext(),
 										R.string.msg_acctcreated,
 										Toast.LENGTH_SHORT).show();
-								getPreferences(MODE_PRIVATE).edit().putString(
-										GlobalData.getProperty("prefsUsername"), username).commit();
+								getPreferences(MODE_PRIVATE).edit()
+										.putString(GlobalData.getProperty("prefsUsername"), username)
+										/* This is bad security: anyone who steals your phone can
+										* steal your account. We'll replace it with login tokens
+										* later. */
+										.putString(GlobalData.getProperty("prefsPassword"), password)
+										.commit();
 								finish();
 								startActivity(i);
 								break;
@@ -115,8 +120,10 @@ public class LoginActivity extends LnfActivity {
 								Intent i = new Intent(LoginActivity.this, AccountActivity.class);
 								Toast.makeText(getApplicationContext(), R.string.msg_loginsuccess,
 										Toast.LENGTH_SHORT).show();
-								getPreferences(MODE_PRIVATE).edit().putString(
-										GlobalData.getProperty("prefsUsername"), username).commit();
+								getPreferences(MODE_PRIVATE).edit()
+										.putString(GlobalData.getProperty("prefsUsername"), username)
+										.putString(GlobalData.getProperty("prefsPassword"), password)
+										.commit();
 								finish();
 								startActivity(i);
 								break;
