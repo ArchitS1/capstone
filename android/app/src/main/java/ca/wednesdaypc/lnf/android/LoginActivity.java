@@ -6,13 +6,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Hashtable;
-import java.util.Map;
-
 import ca.wednesdaypc.lnf.json.JsonResponse;
 
 public class LoginActivity extends LnfActivity {
-	
 	private boolean mIsInCreate = false;
 	private EditText mPasswordEditText;
 	private EditText mConfirmPasswordEditText;
@@ -54,8 +50,8 @@ public class LoginActivity extends LnfActivity {
 	
 	public void createAccount(View v) {
 		String username = mUsernameEditText.getText().toString().trim();
-		String password = mPasswordEditText.getText().toString().trim();
-		String cPassword = mConfirmPasswordEditText.getText().toString().trim();
+		String password = mPasswordEditText.getText().toString();
+		String cPassword = mConfirmPasswordEditText.getText().toString();
 		String email = mEmailEditText.getText().toString().trim();
 		
 		if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
@@ -67,37 +63,81 @@ public class LoginActivity extends LnfActivity {
 				.matches("[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}")) {
 			Toast.makeText(this, R.string.msg_invalidemail, Toast.LENGTH_SHORT).show();
 		} else {
-			Map<String, String> params = new Hashtable<>();
-			params.put(GlobalData.getProperty("serverParamUsername"), username);
-			params.put(GlobalData.getProperty("serverParamPassword"), password);
-			params.put(GlobalData.getProperty("serverParamEmail"), email);
-			
 			ConnectionManager.sendPostRequest(
 					GlobalData.getProperty("servletNameCreateAcct"), response -> {
 						JsonResponse jr = JsonResponse.createFromJson(response);
-						switch(jr.resultCode) {
+						switch (jr.resultCode) {
 							case JsonResponse.CODE_NOMINAL: {
-								Intent i = new Intent(LoginActivity.this,
-										AccountActivity.class);
-								Toast.makeText(this, R.string.msg_acctcreated,
+								Intent i = new Intent(LoginActivity.this, AccountActivity.class);
+								Toast.makeText(getApplicationContext(),
+										R.string.msg_acctcreated,
 										Toast.LENGTH_SHORT).show();
+								getPreferences(MODE_PRIVATE).edit().putString(
+										GlobalData.getProperty("prefsUsername"), username).commit();
 								finish();
 								startActivity(i);
 								break;
-							}case JsonResponse.CODE_DUPE_USERNAME: {
-								Toast.makeText(this, R.string.msg_dupeusername,
+							}
+							case JsonResponse.CODE_DUPE_USERNAME: {
+								Toast.makeText(this,
+										R.string.msg_dupeusername,
 										Toast.LENGTH_SHORT).show();
 								break;
-							}default:
-								Toast.makeText(this, R.string.msg_genericerror,
+							}
+							default:
+								Toast.makeText(this,
+										R.string.msg_genericerror,
 										Toast.LENGTH_SHORT).show();
 						}
 					}, error -> {
 						Toast.makeText(this,
 								getString(R.string.msg_errorcode, error.networkResponse.statusCode),
 								Toast.LENGTH_SHORT).show();
-					}, params);
-			
+					},
+					ConnectionManager.makeKV(GlobalData.getProperty("serverParamUsername"), username),
+					ConnectionManager.makeKV(GlobalData.getProperty("serverParamPassword"), password),
+					ConnectionManager.makeKV(GlobalData.getProperty("serverParamEmail"), email));
+		}
+	}
+	
+	public void login(View v) {
+		String username = mUsernameEditText.getText().toString().trim();
+		String password = mPasswordEditText.getText().toString();
+		
+		if (username.isEmpty() || password.isEmpty()) {
+			Toast.makeText(this, R.string.msg_allfieldsreqd, Toast.LENGTH_SHORT).show();
+		} else {
+			ConnectionManager.sendPostRequest(GlobalData.getProperty("servletNameLogin"),
+					response -> {
+						JsonResponse jr = JsonResponse.createFromJson(response);
+						switch (jr.resultCode) {
+							case JsonResponse.CODE_NOMINAL: {
+								Intent i = new Intent(LoginActivity.this, AccountActivity.class);
+								Toast.makeText(getApplicationContext(), R.string.msg_loginsuccess,
+										Toast.LENGTH_SHORT).show();
+								getPreferences(MODE_PRIVATE).edit().putString(
+										GlobalData.getProperty("prefsUsername"), username).commit();
+								finish();
+								startActivity(i);
+								break;
+							}
+							case JsonResponse.CODE_INVALID_CREDS: {
+								Toast.makeText(this, R.string.msg_invalidcreds,
+										Toast.LENGTH_SHORT).show();
+								break;
+							}
+							default:
+								Toast.makeText(this,
+										R.string.msg_genericerror,
+										Toast.LENGTH_SHORT).show();
+						}
+					}, error -> {
+						Toast.makeText(this,
+								getString(R.string.msg_errorcode, error.networkResponse.statusCode),
+								Toast.LENGTH_SHORT).show();
+					},
+					ConnectionManager.makeKV(GlobalData.getProperty("serverParamUsername"), username),
+					ConnectionManager.makeKV(GlobalData.getProperty("serverParamPassword"), password));
 		}
 	}
 }

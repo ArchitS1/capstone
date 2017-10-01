@@ -19,7 +19,7 @@ public class WelcomeActivity extends LnfActivity {
 		
 		GlobalData.init(getApplicationContext());
 		
-		ConnectionManager.sendRequest("Hello",
+		ConnectionManager.sendGetRequest("Hello",
 				response -> {
 					try {
 						JsonResponse jr = JsonResponse.createFromJson(response);
@@ -34,7 +34,7 @@ public class WelcomeActivity extends LnfActivity {
 								response);
 					}
 				},
-				error -> mTextView.setText("Error: " + error.getMessage()));
+				error -> mTextView.setText("Error: " + error.networkResponse.statusCode));
 		
 		mTitleTextView.setText(R.string.title_welcome);
 		

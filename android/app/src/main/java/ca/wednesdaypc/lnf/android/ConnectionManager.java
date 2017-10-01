@@ -7,25 +7,39 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.JsonParseException;
 
+import java.util.AbstractMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class ConnectionManager {
+class ConnectionManager {
 	private static final String REQUEST_TAG = "RQ_ALL";
 	
-	public static void sendRequest(String servletName, final Consumer<String>
-			responseHandler, final Consumer<VolleyError> errorHandler) {
-		StringRequest request = new StringRequest(Request.Method.GET,
-				GlobalData.getProperty("serverUrl") + servletName,
+	@SafeVarargs
+	static void sendGetRequest(String servletName, Consumer<String> responseHandler,
+	                           Consumer<VolleyError> errorHandler,
+	                           Map.Entry<String, String>... params) {
+		String url = GlobalData.getProperty("serverUrl") + servletName;
+		if (params.length > 0) {
+			//Would use Java.util.StringJoiner, but it requires min API 24
+			url += "?";
+			for (int i = 0; ; i++) {
+				url += params[i].getKey() + "=" + params[i].getValue();
+				if (i == params.length - 1) break;
+				url += "&";
+			}
+		}
+		
+		StringRequest request = new StringRequest(Request.Method.GET, url,
 				response -> responseHandler.accept(response), error -> errorHandler.accept(error));
 		request.setTag(REQUEST_TAG);
 		GlobalData.getRequestQueue().add(request);
 	}
 	
-	public static void sendPostRequest(String servletName,
-	                                   final Consumer<String> responseHandler,
-	                                   final Consumer<VolleyError> errorHandler,
-	                                   Map<String, String> params) {
+	@SafeVarargs
+	static void sendPostRequest(String servletName,
+	                            Consumer<String> responseHandler,
+	                            Consumer<VolleyError> errorHandler,
+	                            Map.Entry<String, String>... params) {
 		PostRequest request = new PostRequest(GlobalData.getProperty("serverUrl") + servletName,
 				response -> {
 					try {
@@ -35,12 +49,16 @@ public class ConnectionManager {
 					}
 				}, error -> errorHandler.accept(error));
 		request.setTag(REQUEST_TAG);
-		params.forEach((k,v)->request.setParam(k,v));
+		for (Map.Entry<String, String> me : params) request.setParam(me.getKey(), me.getValue());
 		GlobalData.getRequestQueue().add(request);
 	}
 	
-	public static void cancelRequests(Object tag) {
+	static void cancelRequests(Object tag) {
 		if (tag == null) tag = REQUEST_TAG;
 		GlobalData.getRequestQueue().cancelAll(tag);
+	}
+	
+	static Map.Entry<String, String> makeKV(String k, String v) {
+		return new AbstractMap.SimpleEntry<String, String>(k, v);
 	}
 }

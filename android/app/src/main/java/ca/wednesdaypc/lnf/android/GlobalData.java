@@ -13,7 +13,7 @@ import java.util.Properties;
  * Singleton class to hold data that persists across Activities
  */
 class GlobalData {
-	public static final String LOG_TAG = "WPC_SR";
+	private static final String LOG_TAG = "WPC_SR";
 	private static GlobalData mInstance;
 	private Properties mProperties;
 	private RequestQueue mQueue;

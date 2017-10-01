@@ -3,6 +3,7 @@
   <string name="title_welcome">Welcome</string>
   <string name="title_login">Login</string>
   <string name="title_createacct">Create Account</string>
+  <string name="title_account">Account</string>
   <string name="desc_backButton">Back button</string>
   <string name="desc_acctButton">Account</string>
   <string name="lbl_username">Username</string>
@@ -20,4 +21,6 @@
   <string name="msg_genericerror">The server was unable to fulfil your request.</string>
   <string name="msg_errorcode">The server encountered an error. Code: %d.</string>
   <string name="msg_allfieldsreqd">All fields are required.</string>
+  <string name="msg_loginsuccess">Successfully logged in.</string>
+  <string name="msg_invalidcreds">Wrong username and/or password.</string>
 </resources>
