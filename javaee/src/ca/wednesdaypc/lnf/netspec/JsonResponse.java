@@ -1,4 +1,4 @@
-package ca.wednesdaypc.lnf.json;
+package ca.wednesdaypc.lnf.netspec;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;

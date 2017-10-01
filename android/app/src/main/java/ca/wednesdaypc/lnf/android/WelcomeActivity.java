@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.google.gson.JsonParseException;
 
-import ca.wednesdaypc.lnf.json.JsonResponse;
+import ca.wednesdaypc.lnf.netspec.JsonResponse;
 
 public class WelcomeActivity extends LnfActivity {
 	

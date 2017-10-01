@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import ca.wednesdaypc.lnf.json.JsonResponse;
+import ca.wednesdaypc.lnf.netspec.JsonResponse;
 
 public class LoginActivity extends LnfActivity {
 	private boolean mIsInCreate = false;

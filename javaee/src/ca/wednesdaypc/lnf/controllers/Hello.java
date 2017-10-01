@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ca.wednesdaypc.lnf.dao.HelloDAO;
-import ca.wednesdaypc.lnf.json.JsonResponse;
+import ca.wednesdaypc.lnf.netspec.JsonResponse;
 
 /**
  * Servlet implementation class Hello

@@ -3,7 +3,7 @@ package ca.wednesdaypc.lnf.android;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import ca.wednesdaypc.lnf.json.JsonResponse;
+import ca.wednesdaypc.lnf.netspec.JsonResponse;
 
 public class AccountActivity extends LnfActivity {
 	
