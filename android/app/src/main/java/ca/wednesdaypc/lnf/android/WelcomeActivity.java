@@ -2,7 +2,6 @@ package ca.wednesdaypc.lnf.android;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.google.gson.JsonParseException;

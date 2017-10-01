@@ -13,4 +13,11 @@
   <string name="btn_createacct">Create Account</string>
   <string name="msg_clickheretocreateaccount">Don\'t have an account? Tap here to create one!</string>
   <string name="msg_clickheretologin">Already have an account? Tap here to login!</string>
+  <string name="msg_passwdmismatch">Passwords do not match.</string>
+  <string name="msg_invalidemail">Not a valid email address.</string>
+  <string name="msg_acctcreated">Account successfully created.</string>
+  <string name="msg_dupeusername">That username already belongs to someone else.</string>
+  <string name="msg_genericerror">The server was unable to fulfil your request.</string>
+  <string name="msg_errorcode">The server encountered an error. Code: %d.</string>
+  <string name="msg_allfieldsreqd">All fields are required.</string>
 </resources>
