@@ -7,4 +7,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Profile {
 	public String username, email, phone, twitter, facebook, instagram, tumblr;
+	//Later add date of account creation
 }

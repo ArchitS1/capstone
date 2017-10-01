@@ -1,5 +1,8 @@
 package ca.wednesdaypc.lnf.android;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -71,5 +74,19 @@ class ConnectionManager {
 		sendPostRequest(GlobalData.getProperty("servletNameLogin"), responseHandler, errorHandler,
 				makeKV(GlobalData.getProperty("serverParamUsername"), username),
 				makeKV(GlobalData.getProperty("serverParamPassword"), password));
+	}
+	
+	static void saveCreds(Activity act, String username, String password) {
+		SharedPreferences.Editor ed = act.getPreferences(Context.MODE_APPEND).edit();
+		ed.putString(GlobalData.getProperty("prefsUsername"), username);
+		ed.putString(GlobalData.getProperty("prefsPassword"), password);
+		ed.commit();
+	}
+	
+	static void clearCreds(Activity act) {
+		SharedPreferences.Editor ed = act.getPreferences(Context.MODE_APPEND).edit();
+		ed.remove(GlobalData.getProperty("prefsUsername"));
+		ed.remove(GlobalData.getProperty("prefsPassword"));
+		ed.commit();
 	}
 }

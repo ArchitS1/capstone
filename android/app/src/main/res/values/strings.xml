@@ -10,10 +10,18 @@
   <string name="lbl_password">Password</string>
   <string name="lbl_confirmpassword">Confirm</string>
   <string name="lbl_email">Email</string>
+  <string name="lbl_phone">Phone</string>
+  <string name="lbl_twitter">Twitter</string>
+  <string name="lbl_facebook">Facebook</string>
+  <string name="lbl_instagram">Instagram</string>
+  <string name="lbl_tumblr">Tumblr</string>
+  <string name="hint_nonegiven">None given</string>
+  <string name="hint_loading">Loading...</string>
   <string name="btn_login">Login</string>
   <string name="btn_createacct">Create Account</string>
   <string name="btn_editacct">Edit</string>
   <string name="btn_logout">Logout</string>
+  <string name="btn_savechanges">Save Changes</string>
   <string name="msg_clickheretocreateaccount">Don\'t have an account? Tap here to create one!</string>
   <string name="msg_clickheretologin">Already have an account? Tap here to login!</string>
   <string name="msg_passwdmismatch">Passwords do not match.</string>
@@ -24,5 +32,7 @@
   <string name="msg_errorcode">The server encountered an error. Code: %d.</string>
   <string name="msg_allfieldsreqd">All fields are required.</string>
   <string name="msg_loginsuccess">Successfully logged in.</string>
+  <string name="msg_logoutsuccess">Successfully logged out.</string>
   <string name="msg_invalidcreds">Wrong username and/or password.</string>
+  <string name="msg_passwordprompt">Enter your password to save your changes.</string>
 </resources>
