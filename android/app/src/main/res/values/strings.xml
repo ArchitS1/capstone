@@ -1,16 +1,16 @@
 <resources>
-  <string name="app_name">Safe Return</string>
-  <string name="title_welcome">Welcome</string>
-  <string name="title_login">Login</string>
-  <string name="title_createacct">Create Account</string>
-  <string name="desc_backButton">Back button</string>
-  <string name="desc_acctButton">Account</string>
-  <string name="lbl_username">Username</string>
-  <string name="lbl_password">Password</string>
-  <string name="lbl_confirmpassword">Confirm</string>
-  <string name="lbl_email">Email</string>
-  <string name="btn_login">Login</string>
-  <string name="btn_createacct">Create Account</string>
-  <string name="msg_clickheretocreateaccount">Don\'t have an account? Tap here to create one!</string>
-  <string name="msg_clickheretologin">Already have an account? Tap here to login!</string>
+    <string name="app_name">Safe Return</string>
+    <string name="title_welcome">Welcome</string>
+    <string name="title_login">Login</string>
+    <string name="title_createacct">Create Account</string>
+    <string name="desc_backButton">Back button</string>
+    <string name="desc_acctButton">Account</string>
+    <string name="lbl_username">Username</string>
+    <string name="lbl_password">Password</string>
+    <string name="lbl_confirmpassword">Confirm</string>
+    <string name="lbl_email">Email</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_createacct">Create Account</string>
+    <string name="msg_clickheretocreateaccount">Don\'t have an account? Tap here to create one!</string>
+    <string name="msg_clickheretologin">Already have an account? Tap here to login!</string>
 </resources>
