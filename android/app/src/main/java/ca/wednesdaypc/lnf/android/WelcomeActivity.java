@@ -48,6 +48,14 @@ public class WelcomeActivity extends LnfActivity {
 			}
 			startActivity(new Intent(WelcomeActivity.this, destination));
 		});
+
+
+		findViewById(R.id.Lost).setOnClickListener(v -> {
+			Class destination;
+				destination = Ticket.class;
+
+			startActivity(new Intent(WelcomeActivity.this, destination));
+		});
 	}
 	
 }

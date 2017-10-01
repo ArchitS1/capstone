@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ca.wednesdaypc.lnf.android.WelcomeActivity">
-  
+
   <TextView
       android:id="@+id/helloTextView"
       android:layout_width="wrap_content"
@@ -16,6 +16,43 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintHorizontal_bias="0.501"
+      app:layout_constraintVertical_bias="0.498" />
+
+  <Button
+      android:id="@+id/Lost"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Lost"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintHorizontal_bias="0.268"
+      app:layout_constraintVertical_bias="0.712" />
+
+  <Button
+      android:id="@+id/Found"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Found"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintHorizontal_bias="0.735"
+      app:layout_constraintVertical_bias="0.712"/>
+
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="386dp"
+      android:layout_height="57dp"
+      android:background="#0b4072"
+      android:padding="10dp"
+      android:text="Welcome to LostAndFound"
+      android:textAlignment="center"
+      android:textColor="@android:color/background_light"
+      android:textSize="24sp" />
 
 </android.support.constraint.ConstraintLayout>
