@@ -30,7 +30,8 @@ class ConnectionManager {
 		}
 		
 		StringRequest request = new StringRequest(Request.Method.GET, url,
-				response -> responseHandler.accept(response), error -> errorHandler.accept(error));
+				response -> handleResponse(response, responseHandler),
+				error -> errorHandler.accept(error));
 		request.setTag(REQUEST_TAG);
 		GlobalData.getRequestQueue().add(request);
 	}
@@ -41,16 +42,19 @@ class ConnectionManager {
 	                            Consumer<VolleyError> errorHandler,
 	                            Map.Entry<String, String>... params) {
 		PostRequest request = new PostRequest(GlobalData.getProperty("serverUrl") + servletName,
-				response -> {
-					try {
-						responseHandler.accept(response);
-					} catch (JsonParseException e) {
-						Log.wtf("LNF", "Couldn't parse response from server.", e);
-					}
-				}, error -> errorHandler.accept(error));
+				response -> handleResponse(response, responseHandler),
+				error -> errorHandler.accept(error));
 		request.setTag(REQUEST_TAG);
 		for (Map.Entry<String, String> me : params) request.setParam(me.getKey(), me.getValue());
 		GlobalData.getRequestQueue().add(request);
+	}
+	
+	private static void handleResponse(String response, Consumer<String> handler) {
+		try {
+			handler.accept(response);
+		} catch (JsonParseException e) {
+			Log.wtf(GlobalData.LOG_TAG, "Couldn't parse response from server.", e);
+		}
 	}
 	
 	static void cancelRequests(Object tag) {
@@ -59,6 +63,13 @@ class ConnectionManager {
 	}
 	
 	static Map.Entry<String, String> makeKV(String k, String v) {
-		return new AbstractMap.SimpleEntry<String, String>(k, v);
+		return new AbstractMap.SimpleEntry<>(k, v);
+	}
+	
+	static void sendLoginRequest(String username, String password, Consumer<String> responseHandler,
+	                             Consumer<VolleyError> errorHandler) {
+		sendPostRequest(GlobalData.getProperty("servletNameLogin"), responseHandler, errorHandler,
+				makeKV(GlobalData.getProperty("serverParamUsername"), username),
+				makeKV(GlobalData.getProperty("serverParamPassword"), password));
 	}
 }

@@ -90,14 +90,10 @@ public class LoginActivity extends LnfActivity {
 								break;
 							}
 							default:
-								Toast.makeText(this,
-										R.string.msg_genericerror,
-										Toast.LENGTH_SHORT).show();
+								Toaster.declaredError(this);
 						}
 					}, error -> {
-						Toast.makeText(this,
-								getString(R.string.msg_errorcode, error.networkResponse.statusCode),
-								Toast.LENGTH_SHORT).show();
+						Toaster.httpError(this, error.networkResponse.statusCode);
 					},
 					ConnectionManager.makeKV(GlobalData.getProperty("serverParamUsername"), username),
 					ConnectionManager.makeKV(GlobalData.getProperty("serverParamPassword"), password),
@@ -112,7 +108,7 @@ public class LoginActivity extends LnfActivity {
 		if (username.isEmpty() || password.isEmpty()) {
 			Toast.makeText(this, R.string.msg_allfieldsreqd, Toast.LENGTH_SHORT).show();
 		} else {
-			ConnectionManager.sendPostRequest(GlobalData.getProperty("servletNameLogin"),
+			ConnectionManager.sendLoginRequest(username, password,
 					response -> {
 						JsonResponse jr = JsonResponse.createFromJson(response);
 						switch (jr.resultCode) {
@@ -134,17 +130,11 @@ public class LoginActivity extends LnfActivity {
 								break;
 							}
 							default:
-								Toast.makeText(this,
-										R.string.msg_genericerror,
-										Toast.LENGTH_SHORT).show();
+								Toaster.declaredError(this);
 						}
 					}, error -> {
-						Toast.makeText(this,
-								getString(R.string.msg_errorcode, error.networkResponse.statusCode),
-								Toast.LENGTH_SHORT).show();
-					},
-					ConnectionManager.makeKV(GlobalData.getProperty("serverParamUsername"), username),
-					ConnectionManager.makeKV(GlobalData.getProperty("serverParamPassword"), password));
+						Toaster.httpError(this, error.networkResponse.statusCode);
+					});
 		}
 	}
 }
