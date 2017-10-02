@@ -64,7 +64,8 @@ public class AccountActivity extends LnfActivity {
 					break;
 				}
 				case JsonResponse.CODE_NEED_LOGIN: {
-					SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+					SharedPreferences prefs = getSharedPreferences(
+							GlobalData.getProperty("prefsNameLogin"), MODE_PRIVATE);
 					ConnectionManager.sendLoginRequest(prefs.getString("prefsUsername", null),
 							prefs.getString("prefsPassword", null), lgResp -> {
 								JsonResponse lr = JsonResponse.createFromJson(lgResp);

@@ -77,14 +77,16 @@ class ConnectionManager {
 	}
 	
 	static void saveCreds(Activity act, String username, String password) {
-		SharedPreferences.Editor ed = act.getPreferences(Context.MODE_APPEND).edit();
+		SharedPreferences.Editor ed = act.getSharedPreferences(
+				GlobalData.getProperty("prefsNameLogin"), Activity.MODE_APPEND).edit();
 		ed.putString(GlobalData.getProperty("prefsUsername"), username);
 		ed.putString(GlobalData.getProperty("prefsPassword"), password);
 		ed.commit();
 	}
 	
 	static void clearCreds(Activity act) {
-		SharedPreferences.Editor ed = act.getPreferences(Context.MODE_APPEND).edit();
+		SharedPreferences.Editor ed = act.getSharedPreferences(
+				GlobalData.getProperty("prefsNameLogin"), Activity.MODE_APPEND).edit();
 		ed.remove(GlobalData.getProperty("prefsUsername"));
 		ed.remove(GlobalData.getProperty("prefsPassword"));
 		ed.commit();

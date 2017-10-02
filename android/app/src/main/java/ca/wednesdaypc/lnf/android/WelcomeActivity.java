@@ -40,7 +40,8 @@ public class WelcomeActivity extends LnfActivity {
 		
 		findViewById(R.id.accountImageView).setOnClickListener(v -> {
 			Class destination;
-			if (getPreferences(MODE_PRIVATE).contains(GlobalData.getProperty("prefsUsername"))) {
+			if (getSharedPreferences(GlobalData.getProperty("prefsNameLogin"), MODE_APPEND)
+					.contains(GlobalData.getProperty("prefsUsername"))) {
 				destination = AccountActivity.class;
 			} else {
 				destination = LoginActivity.class;
