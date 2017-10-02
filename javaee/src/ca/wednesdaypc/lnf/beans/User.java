@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 import lombok.Data;
@@ -14,7 +15,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@NamedQuery(name="User.exists", query="select count(*) from User where username = :username and password = :password")
+@NamedQueries({@NamedQuery(name="User.exists",
+query="select count(*) from User where username = :username and password = :password"),
+@NamedQuery(name="User.viewAccount", query="from User where username = :username")})
 public class User implements Serializable{
 	@Id
 	@GeneratedValue 

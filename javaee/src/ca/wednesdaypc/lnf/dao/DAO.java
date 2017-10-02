@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 
 import ca.wednesdaypc.lnf.beans.User;
 import ca.wednesdaypc.lnf.netspec.JsonResponse;
+import ca.wednesdaypc.lnf.netspec.Profile;
 
 public class DAO {
 	
@@ -55,6 +56,34 @@ public class DAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResponse.CODE_DB_ERROR;
+		}
+	}
+	
+	public JsonResponse viewAccount(String username) {
+		JsonResponse jr = new JsonResponse();
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			
+			Query query = session.getNamedQuery("User.viewAccount");
+			query.setParameter("username", username);
+			
+			List<User> rs = query.getResultList();
+			
+			if (rs.isEmpty()) {
+				jr.resultCode = JsonResponse.CODE_DB_ERROR;
+				session.close();
+				return jr;
+			}
+			
+			Profile p = new Profile(rs.get(0));
+			jr.payload = p;
+			session.close();
+			return jr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			jr.resultCode = JsonResponse.CODE_DB_ERROR;
+			return jr;
 		}
 	}
 }
