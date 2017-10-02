@@ -94,7 +94,7 @@ public class LoginActivity extends LnfActivity {
 								Toaster.declaredError(this);
 						}
 					}, error -> {
-						Toaster.httpError(this, error.networkResponse.statusCode);
+						Toaster.httpError(this, error);
 					},
 					ConnectionManager.makeKV(GlobalData.getProperty("serverParamUsername"), username),
 					ConnectionManager.makeKV(GlobalData.getProperty("serverParamPassword"), password),
@@ -115,8 +115,6 @@ public class LoginActivity extends LnfActivity {
 						switch (jr.resultCode) {
 							case JsonResponse.CODE_NOMINAL: {
 								Intent i = new Intent(LoginActivity.this, AccountActivity.class);
-								Toast.makeText(getApplicationContext(), R.string.msg_loginsuccess,
-										Toast.LENGTH_SHORT).show();
 								getSharedPreferences(GlobalData.getProperty("prefsNameLogin"),
 										MODE_APPEND).edit()
 										.putString(GlobalData.getProperty("prefsUsername"), username)
@@ -124,6 +122,8 @@ public class LoginActivity extends LnfActivity {
 										.commit();
 								finish();
 								startActivity(i);
+								Toast.makeText(getApplicationContext(), R.string.msg_loginsuccess,
+										Toast.LENGTH_SHORT).show();
 								break;
 							}
 							case JsonResponse.CODE_INVALID_CREDS: {
@@ -135,7 +135,7 @@ public class LoginActivity extends LnfActivity {
 								Toaster.declaredError(this);
 						}
 					}, error -> {
-						Toaster.httpError(this, error.networkResponse.statusCode);
+						Toaster.httpError(this, error);
 					});
 		}
 	}

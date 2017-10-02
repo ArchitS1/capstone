@@ -29,6 +29,7 @@
   <string name="msg_acctcreated">Account successfully created.</string>
   <string name="msg_dupeusername">That username already belongs to someone else.</string>
   <string name="msg_genericerror">The server was unable to fulfil your request.</string>
+  <string name="msg_timeout">The request timed out.</string>
   <string name="msg_errorcode">The server encountered an error. Code: %d.</string>
   <string name="msg_allfieldsreqd">All fields are required.</string>
   <string name="msg_loginsuccess">Successfully logged in.</string>

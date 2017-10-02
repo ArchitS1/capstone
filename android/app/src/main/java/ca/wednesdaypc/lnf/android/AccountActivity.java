@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.internal.LinkedTreeMap;
 
 import ca.wednesdaypc.lnf.netspec.JsonResponse;
 import ca.wednesdaypc.lnf.netspec.Profile;
@@ -23,6 +26,8 @@ public class AccountActivity extends LnfActivity {
 	
 	private Button mBtnEdit;
 	private Button mBtnLogout;
+	
+	private TextView mTvTheUsername;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +47,13 @@ public class AccountActivity extends LnfActivity {
 		mBtnEdit = (Button)findViewById(R.id.btnEdit);
 		mBtnLogout = (Button)findViewById(R.id.btnLogout);
 		
+		mTvTheUsername = (TextView)findViewById(R.id.tvTheUsername);
+		
 		ConnectionManager.sendGetRequest(GlobalData.getProperty("servletNameAccount"), response -> {
 			JsonResponse jr = JsonResponse.createFromJson(response);
 			switch (jr.resultCode) {
 				case JsonResponse.CODE_NOMINAL: {
-					Profile profile = (Profile)jr.payload;
+					Profile profile = new Profile((LinkedTreeMap)jr.payload);
 					String[] fields = new String[]{profile.email, profile.phone, profile.twitter,
 							profile.facebook, profile.instagram, profile.tumblr};
 					
@@ -58,6 +65,11 @@ public class AccountActivity extends LnfActivity {
 							mEditTexts[i].setText(fields[i]);
 						}
 					}
+					
+					SharedPreferences prefs = getSharedPreferences(GlobalData.getProperty(
+							"prefsNameLogin"), MODE_APPEND);
+					String username = prefs.getString(GlobalData.getProperty("prefsUsername"), null);
+					mTvTheUsername.setText(username);
 					
 					mBtnEdit.setEnabled(true);
 					mBtnLogout.setEnabled(true);
@@ -79,7 +91,7 @@ public class AccountActivity extends LnfActivity {
 										ConnectionManager.clearCreds(this);
 								}
 							}, lgErr -> {
-								Toaster.httpError(this, lgErr.networkResponse.statusCode);
+								Toaster.httpError(this, lgErr);
 								ConnectionManager.clearCreds(this);
 							});
 					break;
@@ -87,7 +99,7 @@ public class AccountActivity extends LnfActivity {
 				default:
 					Toaster.declaredError(this);
 			}
-		}, error -> Toaster.httpError(this, error.networkResponse.statusCode));
+		}, error -> Toaster.httpError(this, error));
 		
 		mTitleTextView.setText(R.string.title_account);
 	}
@@ -108,6 +120,6 @@ public class AccountActivity extends LnfActivity {
 				default:
 					Toaster.declaredError(this);
 			}
-		}, error -> Toaster.httpError(this, error.networkResponse.statusCode));
+		}, error -> Toaster.httpError(this, error));
 	}
 }

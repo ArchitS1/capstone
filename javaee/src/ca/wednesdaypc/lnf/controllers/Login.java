@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ca.wednesdaypc.lnf.dao.DAO;
 import ca.wednesdaypc.lnf.netspec.JsonResponse;
@@ -34,7 +35,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 	
 	/**
@@ -48,7 +49,10 @@ public class Login extends HttpServlet {
 		jr.resultCode = dao.login(username, request.getParameter("password"));
 		
 		if (jr.resultCode == JsonResponse.CODE_NOMINAL) {
-			request.getSession().setAttribute("username", username);
+			HttpSession session = request.getSession(); 
+			session.setAttribute("username", username);
+			int x;
+			x = 2;
 		}
 		
 		response.getWriter().append(jr.toJson());

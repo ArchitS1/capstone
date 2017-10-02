@@ -7,6 +7,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 import java.io.IOException;
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.URI;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -34,6 +39,8 @@ class GlobalData {
 		
 		mInstance = new GlobalData();
 		mInstance.mQueue = Volley.newRequestQueue(context);
+		
+		CookieHandler.setDefault(new CookieManager());
 		
 		try {
 			mInstance.mProperties = new Properties();

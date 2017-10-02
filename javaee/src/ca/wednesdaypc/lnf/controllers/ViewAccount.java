@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ca.wednesdaypc.lnf.dao.DAO;
 import ca.wednesdaypc.lnf.netspec.JsonResponse;
@@ -32,22 +33,22 @@ public class ViewAccount extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JsonResponse jr = new JsonResponse();
-		String username = (String)request.getSession().getAttribute("username");
-		if (username == null) {
-			jr.resultCode = JsonResponse.CODE_NEED_LOGIN;
-		} else {
-			jr = dao.viewAccount(username);
-		}
-		response.getWriter().append(jr.toJson());
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		JsonResponse jr = new JsonResponse();
+		HttpSession session = request.getSession();
+		String username = (String)session.getAttribute("username");
+		if (username == null) {
+			jr.resultCode = JsonResponse.CODE_NEED_LOGIN;
+		} else {
+			jr = dao.viewAccount(username);
+		}
+		response.getWriter().append(jr.toJson());
 	}
 
 }

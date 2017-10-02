@@ -81,7 +81,8 @@
               android:layout_marginLeft="8dp"
               android:layout_marginStart="8dp"
               android:layout_weight="1"
-              android:gravity="end"/>
+              android:gravity="end"
+              android:textSize="18sp"/>
 
         </TableRow>
   
@@ -248,20 +249,22 @@
             android:layout_marginBottom="0dp"
             android:layout_marginTop="16dp"
             android:text="@string/msg_passwordprompt"
-            android:textAlignment="center"/>
-        
+            android:textAlignment="center"
+            android:visibility="gone"/>
+  
         <TableRow
             android:id="@+id/trPassword"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-  
+            android:layout_height="match_parent"
+            android:visibility="gone">
+    
           <TextView
               android:id="@+id/tvPassword"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_gravity="center_vertical"
               android:text="@string/lbl_password"/>
-  
+    
           <EditText
               android:id="@+id/etPassword"
               android:layout_width="match_parent"
@@ -272,7 +275,7 @@
               android:layout_weight="1"
               android:gravity="end"
               android:inputType="textPassword"/>
-
+  
         </TableRow>
   
         <Button
@@ -280,6 +283,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_savechanges"
+            android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trPassword"/>
