@@ -1,4 +1,4 @@
-package ca.wednesdaypc.lnf.json;
+package ca.wednesdaypc.lnf.netspec;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
@@ -12,6 +12,8 @@ public class JsonResponse {
 	public static final int CODE_NOMINAL = 0;
 	public static final int CODE_NEED_LOGIN = 1;
 	public static final int CODE_DB_ERROR = 2;
+	public static final int CODE_DUPE_USERNAME = 3;
+	public static final int CODE_INVALID_CREDS = 4;
 	private static final Gson gson = new Gson();
 	
 	public int resultCode;

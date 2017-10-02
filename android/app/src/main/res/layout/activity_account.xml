@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ca.wednesdaypc.lnf.android.AccountActivity"
+    android:focusableInTouchMode="true">
+  
+  <ScrollView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+    
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+  
+      <Button
+          android:id="@+id/btnEdit"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="8dp"
+          android:enabled="false"
+          android:text="@string/btn_editacct"
+          app:layout_constraintHorizontal_chainStyle="packed"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toLeftOf="@+id/btnLogout"
+          app:layout_constraintTop_toTopOf="parent"/>
+  
+      <Button
+          android:id="@+id/btnLogout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="8dp"
+          android:enabled="false"
+          android:text="@string/btn_logout"
+          app:layout_constraintLeft_toRightOf="@+id/btnEdit"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:onClick="logout"/>
+      
+      <TableLayout
+          android:id="@+id/propertyTable"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="0dp"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="12dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/btnEdit">
+  
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+  
+          <TextView
+              android:id="@+id/tvUsername"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginBottom="4dp"
+              android:text="@string/lbl_username"/>
+  
+          <TextView
+              android:id="@+id/tvTheUsername"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginBottom="4dp"
+              android:layout_marginLeft="8dp"
+              android:layout_marginStart="8dp"
+              android:layout_weight="1"
+              android:gravity="end"
+              android:textSize="18sp"/>
+
+        </TableRow>
+  
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+  
+          <TextView
+              android:id="@+id/tvEmail"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:text="@string/lbl_email"/>
+  
+          <EditText
+              android:id="@+id/etEmail"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="8dp"
+              android:layout_marginStart="8dp"
+              android:layout_weight="1"
+              android:enabled="false"
+              android:gravity="end"
+              android:hint="@string/hint_loading"
+              android:inputType="textEmailAddress"/>
+  
+        </TableRow>
+  
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+  
+          <TextView
+              android:id="@+id/tvPhone"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:text="@string/lbl_phone"/>
+  
+          <EditText
+              android:id="@+id/etPhone"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="8dp"
+              android:layout_marginStart="8dp"
+              android:layout_weight="1"
+              android:enabled="false"
+              android:gravity="end"
+              android:hint="@string/hint_loading"
+              android:inputType="phone"/>
+
+        </TableRow>
+  
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+  
+          <TextView
+              android:id="@+id/tvTwitter"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:text="@string/lbl_twitter"/>
+  
+          <EditText
+              android:id="@+id/etTwitter"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="8dp"
+              android:layout_marginStart="8dp"
+              android:layout_weight="1"
+              android:enabled="false"
+              android:gravity="end"
+              android:hint="@string/hint_loading"
+              android:inputType="textPersonName"/>
+  
+        </TableRow>
+  
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+  
+          <TextView
+              android:id="@+id/tvFacebook"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:text="@string/lbl_facebook"/>
+  
+          <EditText
+              android:id="@+id/etFacebook"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="8dp"
+              android:layout_marginStart="8dp"
+              android:layout_weight="1"
+              android:enabled="false"
+              android:gravity="end"
+              android:hint="@string/hint_loading"
+              android:inputType="textPersonName"/>
+  
+        </TableRow>
+  
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+  
+          <TextView
+              android:id="@+id/tvInstagram"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:text="@string/lbl_instagram"/>
+  
+          <EditText
+              android:id="@+id/etInstagram"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="8dp"
+              android:layout_marginStart="8dp"
+              android:layout_weight="1"
+              android:enabled="false"
+              android:gravity="end"
+              android:hint="@string/hint_loading"
+              android:inputType="textPersonName"/>
+
+        </TableRow>
+  
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+  
+          <TextView
+              android:id="@+id/tvTumblr"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:text="@string/lbl_tumblr"/>
+  
+          <EditText
+              android:id="@+id/etTumblr"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="8dp"
+              android:layout_marginStart="8dp"
+              android:layout_weight="1"
+              android:enabled="false"
+              android:gravity="end"
+              android:hint="@string/hint_loading"
+              android:inputType="textPersonName"/>
+
+        </TableRow>
+  
+        <TextView
+            android:id="@+id/tvPasswordPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/msg_passwordprompt"
+            android:textAlignment="center"
+            android:visibility="gone"/>
+  
+        <TableRow
+            android:id="@+id/trPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+    
+          <TextView
+              android:id="@+id/tvPassword"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:text="@string/lbl_password"/>
+    
+          <EditText
+              android:id="@+id/etPassword"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="8dp"
+              android:layout_marginStart="8dp"
+              android:layout_weight="1"
+              android:gravity="end"
+              android:inputType="textPassword"/>
+  
+        </TableRow>
+  
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_savechanges"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trPassword"/>
+        
+      </TableLayout>
+  
+      
+    </android.support.constraint.ConstraintLayout>
+  </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,19 +1,15 @@
 package ca.wednesdaypc.lnf.android;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonParseException;
 
-import ca.wednesdaypc.lnf.json.JsonResponse;
+import ca.wednesdaypc.lnf.netspec.JsonResponse;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends LnfActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,30 +18,41 @@ public class WelcomeActivity extends AppCompatActivity {
 		
 		final TextView mTextView = (TextView)findViewById(R.id.helloTextView);
 		
-		RequestQueue queue = Volley.newRequestQueue(this);
-		String url = "http://192.168.2.36:8080/capstone_server/Hello";
-		//String url = "http://google.ca";
+		GlobalData.init(getApplicationContext());
 		
-		// Request a string response from the provided URL.
-		StringRequest request = new StringRequest(Request.Method.GET, url,
-				new Response.Listener<String>() {
-					@Override
-					public void onResponse(String response) {
+		//ConnectionManager.clearCreds(this);
+		/*
+		ConnectionManager.sendGetRequest("Hello",
+				response -> {
+					try {
 						JsonResponse jr = JsonResponse.createFromJson(response);
 						if (jr.resultCode == JsonResponse.CODE_NOMINAL) {
-							mTextView.setText((String) jr.payload);
+							mTextView.setText((String)jr.payload);
 						} else {
-							mTextView.setText("The server was unable to complete your request.");
+							mTextView.setText("The server reported that it was unable to " +
+									"complete your request.");
 						}
+					} catch (JsonParseException e) {
+						mTextView.setText("Couldn't parse the response from the server:\n" +
+								response);
 					}
-				}, new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				mTextView.setText("Couldn't retrieve data");
-			}
-		});
+				},
+				error -> mTextView.setText("Error: " + error.networkResponse.statusCode));
+		*/
+		mTitleTextView.setText(R.string.title_welcome);
 		
-		// Add the request to the RequestQueue.
-		queue.add(request);
+		findViewById(R.id.accountImageView).setOnClickListener(v -> {
+			Class destination;
+			SharedPreferences prefs = getSharedPreferences(GlobalData.getProperty(
+					"prefsNameLogin"), MODE_APPEND);
+			String username = prefs.getString(GlobalData.getProperty("prefsUsername"), null);
+			if (username != null) {
+				destination = AccountActivity.class;
+			} else {
+				destination = LoginActivity.class;
+			}
+			startActivity(new Intent(WelcomeActivity.this, destination));
+		});
 	}
+	
 }

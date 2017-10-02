@@ -6,23 +6,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import ca.wednesdaypc.lnf.dao.HelloDAO;
-import ca.wednesdaypc.lnf.json.JsonResponse;
+import ca.wednesdaypc.lnf.dao.DAO;
+import ca.wednesdaypc.lnf.netspec.JsonResponse;
 
 /**
- * Servlet implementation class Hello
+ * Servlet implementation class Login
  */
-@WebServlet("/Hello")
-public class Hello extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private DAO dao = new DAO();
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Hello() {
+	public Login() {
 		super();
-		//TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -31,16 +34,8 @@ public class Hello extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String message = (new HelloDAO(getServletContext())).getHello();
-		JsonResponse resp = new JsonResponse();
-		if (message == null) {
-			resp.resultCode = JsonResponse.CODE_DB_ERROR;
-		} else {
-			resp.payload = message;
-			resp.resultCode = JsonResponse.CODE_NOMINAL;
-		}
-		response.getWriter().append(resp.toJson());
-		//response.getWriter().append("Hello World!");
+		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 	
 	/**
@@ -49,8 +44,18 @@ public class Hello extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//TODO Auto-generated method stub
-		doGet(request, response);
+		JsonResponse jr = new JsonResponse();
+		String username = request.getParameter("username");
+		jr.resultCode = dao.login(username, request.getParameter("password"));
+		
+		if (jr.resultCode == JsonResponse.CODE_NOMINAL) {
+			HttpSession session = request.getSession(); 
+			session.setAttribute("username", username);
+			int x;
+			x = 2;
+		}
+		
+		response.getWriter().append(jr.toJson());
 	}
 	
 }
