@@ -41,9 +41,11 @@ public class CreateAccount extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JsonResponse jr = new JsonResponse();
-		if (dao.createAcct(request.getParameter("username"), request.getParameter("password"),
+		String username = request.getParameter("username");
+		if (dao.createAcct(username, request.getParameter("password"),
 				request.getParameter("email"))) {
 			jr.resultCode = JsonResponse.CODE_NOMINAL;
+			request.getSession().setAttribute("username", username);
 		} else {
 			// TODO separate out dupe username result
 			jr.resultCode = JsonResponse.CODE_DB_ERROR;
