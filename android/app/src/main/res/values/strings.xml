@@ -36,4 +36,5 @@
   <string name="msg_logoutsuccess">Successfully logged out.</string>
   <string name="msg_invalidcreds">Wrong username and/or password.</string>
   <string name="msg_passwordprompt">Enter your password to save your changes.</string>
+  <string name="msg_welcome">Welcome to Safe Return! Press the account button in the top-right to get started.</string>
 </resources>

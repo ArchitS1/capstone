@@ -19,6 +19,8 @@ public class WelcomeActivity extends LnfActivity {
 		
 		GlobalData.init(getApplicationContext());
 		
+		ConnectionManager.clearCreds(this);
+		/*
 		ConnectionManager.sendGetRequest("Hello",
 				response -> {
 					try {
@@ -35,7 +37,7 @@ public class WelcomeActivity extends LnfActivity {
 					}
 				},
 				error -> mTextView.setText("Error: " + error.networkResponse.statusCode));
-		
+		*/
 		mTitleTextView.setText(R.string.title_welcome);
 		
 		findViewById(R.id.accountImageView).setOnClickListener(v -> {
