@@ -1,11 +1,15 @@
 package ca.wednesdaypc.lnf.dao;
 import java.util.List;
 
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.TransactionException;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
 
 import ca.wednesdaypc.lnf.beans.User;
 import ca.wednesdaypc.lnf.netspec.JsonResponse;
@@ -17,8 +21,8 @@ public class DAO {
 	.configure("ca/sheridancollege/config/hibernate.cfg.xml")
 	.buildSessionFactory();
 	
-	public boolean createAcct(String username, String password, String email) {
-		Session session;
+	public int createAcct(String username, String password, String email) {
+		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
@@ -29,10 +33,15 @@ public class DAO {
 			session.getTransaction().commit();
 			session.close();
 			
-			return true;
+			return JsonResponse.CODE_NOMINAL;
 		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+			if (e instanceof PersistenceException && e.getCause() instanceof ConstraintViolationException) {
+				return JsonResponse.CODE_DUPE_USERNAME;
+			} else {
+				return JsonResponse.CODE_DB_ERROR;
+			}
+		} finally {
+			if (session != null) session.close();
 		}
 	}
 	
@@ -52,7 +61,6 @@ public class DAO {
 			} else {
 				return JsonResponse.CODE_INVALID_CREDS;
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResponse.CODE_DB_ERROR;

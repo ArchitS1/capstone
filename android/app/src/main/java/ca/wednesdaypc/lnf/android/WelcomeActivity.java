@@ -19,7 +19,7 @@ public class WelcomeActivity extends LnfActivity {
 		
 		GlobalData.init(getApplicationContext());
 		
-		ConnectionManager.clearCreds(this);
+		//ConnectionManager.clearCreds(this);
 		/*
 		ConnectionManager.sendGetRequest("Hello",
 				response -> {
