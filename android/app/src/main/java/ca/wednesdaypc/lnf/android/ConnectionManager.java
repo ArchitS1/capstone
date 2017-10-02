@@ -91,4 +91,11 @@ class ConnectionManager {
 		ed.remove(GlobalData.getProperty("prefsPassword"));
 		ed.commit();
 	}
+	
+	static String[] getCreds(Context ctx) {
+		SharedPreferences prefs = ctx.getSharedPreferences(GlobalData.getProperty("prefsNameLogin"),
+				Activity.MODE_APPEND);
+		return new String[]{prefs.getString(GlobalData.getProperty("prefsUsername"), null),
+				prefs.getString(GlobalData.getProperty("prefsPassword"), null)};
+	}
 }

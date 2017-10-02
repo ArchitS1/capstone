@@ -66,34 +66,29 @@ public class AccountActivity extends LnfActivity {
 						}
 					}
 					
-					SharedPreferences prefs = getSharedPreferences(GlobalData.getProperty(
-							"prefsNameLogin"), MODE_APPEND);
-					String username = prefs.getString(GlobalData.getProperty("prefsUsername"), null);
-					mTvTheUsername.setText(username);
+					mTvTheUsername.setText(ConnectionManager.getCreds(this)[0]);
 					
 					mBtnEdit.setEnabled(true);
 					mBtnLogout.setEnabled(true);
 					break;
 				}
 				case JsonResponse.CODE_NEED_LOGIN: {
-					SharedPreferences prefs = getSharedPreferences(
-							GlobalData.getProperty("prefsNameLogin"), MODE_PRIVATE);
-					ConnectionManager.sendLoginRequest(prefs.getString("prefsUsername", null),
-							prefs.getString("prefsPassword", null), lgResp -> {
-								JsonResponse lr = JsonResponse.createFromJson(lgResp);
-								switch (lr.resultCode) {
-									case JsonResponse.CODE_NOMINAL: {
-										recreate();
-										break;
-									}
-									default:
-										Toaster.declaredError(this);
-										ConnectionManager.clearCreds(this);
-								}
-							}, lgErr -> {
-								Toaster.httpError(this, lgErr);
+					String[] creds = ConnectionManager.getCreds(this);
+					ConnectionManager.sendLoginRequest(creds[0], creds[1], lgResp -> {
+						JsonResponse lr = JsonResponse.createFromJson(lgResp);
+						switch (lr.resultCode) {
+							case JsonResponse.CODE_NOMINAL: {
+								recreate();
+								break;
+							}
+							default:
+								Toaster.declaredError(this);
 								ConnectionManager.clearCreds(this);
-							});
+						}
+					}, lgErr -> {
+						Toaster.httpError(this, lgErr);
+						ConnectionManager.clearCreds(this);
+					});
 					break;
 				}
 				default:

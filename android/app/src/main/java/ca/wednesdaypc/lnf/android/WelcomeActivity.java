@@ -1,6 +1,7 @@
 package ca.wednesdaypc.lnf.android;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -42,8 +43,10 @@ public class WelcomeActivity extends LnfActivity {
 		
 		findViewById(R.id.accountImageView).setOnClickListener(v -> {
 			Class destination;
-			if (getSharedPreferences(GlobalData.getProperty("prefsNameLogin"), MODE_APPEND)
-					.contains(GlobalData.getProperty("prefsUsername"))) {
+			SharedPreferences prefs = getSharedPreferences(GlobalData.getProperty(
+					"prefsNameLogin"), MODE_APPEND);
+			String username = prefs.getString(GlobalData.getProperty("prefsUsername"), null);
+			if (username != null) {
 				destination = AccountActivity.class;
 			} else {
 				destination = LoginActivity.class;
