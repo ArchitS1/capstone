@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ca.wednesdaypc.lnf.android.Ticket">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="57dp"
         android:background="#0b4072"
         android:padding="10dp"
@@ -23,13 +34,15 @@
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_chainStyle="packed"/>
 
-    <TableLayout
+    </LinearLayout>
+
+
+        <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginLeft="18dp"
-
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -43,18 +56,18 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/todaydate"
+                android:id="@+id/ticketDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="Date"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/dateEditText"
+                android:id="@+id/tickeDateEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -68,29 +81,28 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/Itemdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="Date Item Was Lost"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/usernameEditText"
+                android:id="@+id/ItemdateEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="date"
-                android:textColorLink="@color/colorPrimary" />
+                android:inputType="date"/>
 
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/title"
@@ -100,7 +112,7 @@
                 android:layout_marginRight="8dp"
                 android:text="Title"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -108,8 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textColorLink="@color/colorPrimary" />
+                android:inputType="textPersonName" />
 
         </TableRow>
 
@@ -118,18 +129,20 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/confirmPasswordTextView"
+                android:id="@+id/categoryTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="Category"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinner"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -141,23 +154,21 @@
 
 
             <TextView
-                android:id="@+id/emailTextView"
+                android:id="@+id/ManufactureTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="Manufacture / Author"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/ManufactureEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textColorLink="@color/colorPrimary" />
+                android:ems="10" />
         </TableRow>
 
         <TableRow
@@ -172,18 +183,21 @@
                 android:layout_marginRight="8dp"
                 android:text="Description"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
+        </TableRow>
 
             <EditText
                 android:id="@+id/descriptionEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textColorLink="@color/colorPrimary" />
-
-        </TableRow>
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -197,7 +211,7 @@
                 android:layout_marginRight="8dp"
                 android:text="Primary Color"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -205,8 +219,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textColorLink="@color/colorPrimary" />
+                android:inputType="textPersonName"/>
 
         </TableRow>
 
@@ -223,16 +236,15 @@
                 android:layout_marginRight="8dp"
                 android:text="Secondary Color"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/SecondarycolorEditTextcolorEditText"
+                android:id="@+id/SecondarycolorEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textColorLink="@color/colorPrimary" />
+                android:inputType="textPersonName"/>
 
         </TableRow>
 
@@ -248,7 +260,7 @@
                 android:layout_marginRight="8dp"
                 android:text="Reward Amount"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -256,8 +268,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textColorLink="@color/colorPrimary" />
+                android:inputType="textPersonName"/>
 
         </TableRow>
 
@@ -273,7 +284,7 @@
                 android:layout_marginRight="8dp"
                 android:text="Location"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -281,16 +292,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textColorLink="@color/colorPrimary" />
+                android:inputType="textPersonName"/>
 
         </TableRow>
 
 
     </TableLayout>
 
-
-</android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
 
 
 
